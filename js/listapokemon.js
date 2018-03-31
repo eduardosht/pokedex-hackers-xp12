@@ -2,7 +2,7 @@
   //API: https://pokeapi.co/docsv2
   //define link de consumo à api
   //TO-DO: ADICIONAR LINK DA API PARA LISTAR POKEMONS
-  const URL = '';
+  const URL = 'https://pokeapi.co/api/v2/pokemon/'; 
   //instancia classe responsável ao consumo da api
   const xhr = new XMLHttpRequest();
   //define opções da requisição
@@ -24,6 +24,9 @@
     let div = document.createElement('div');
     //adiciona classe row do bootstrap na div
     div.classList.add('row');
+    
+    //contador
+    let index = 0;
     //itera em cada um dos pokemons
     pokemons.map(pokemon => {
       //cria coluna do bootstrap
@@ -32,15 +35,14 @@
       //cria card do bootstrap
       const card = document.createElement('div');
       card.classList.add('card', 'mb-3');
-      //adiciona event listener para card
+      //adiciona event listener para 
+
       card.addEventListener('click', function() {
+
         //CHAMAR FUNÇÃO MOSTRA POKEMON PASSANDO COMO
         // PARAMETRO O LINK OBTIDO PARA CADA POKEMON
 
-
-
-
-
+        mostraPokemon( pokemon.url );
       });
       col.appendChild(card);
       //cria a div com a classe card-body que é onde
@@ -53,12 +55,19 @@
       cardTitle.classList.add('card-title');
       //TO-DO: ADICIONE AQUI O NOME DOS POKEMONS
 
-
+        if ( index < 10 ) {
+          const name = document.createElement('span');
+          name.append(pokemon.name);
+          name.classList.add('pokemon-name');
+          cardTitle.append(name);
+        } else { return false; }
 
 
       cardBody.appendChild(cardTitle);
       //adiciona coluna na div principal
       div.appendChild(col);
+
+      index++;
     });
     //adiciona a div no elemento main
     document.querySelector('main').appendChild(div);
