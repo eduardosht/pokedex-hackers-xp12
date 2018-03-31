@@ -60,6 +60,15 @@ function populaModal(pokemon) {
   let modal_body  = document.createElement('div');
   modal_body.classList.add('modal-body');
 
+  let favoritar_btn  = document.createElement('div');
+  favoritar_btn.classList.add('btn', 'btn-primary', 'favoritar-poke');
+  favoritar_btn.onclick = favoritarPokemon( pokemon.id );
+  favoritar_btn.append('Favoritar');
+
+  let modal_footer = document.createElement('div');
+  modal_footer.classList.add('modal-footer');
+  modal_footer.append( favoritar_btn );
+
   let pokeInfo_id = document.createElement('p');
   pokeInfo_id.append( 'ID: ' + pokemon.id );
   let pokeInfo_tipo = document.createElement('p');
@@ -74,10 +83,11 @@ function populaModal(pokemon) {
   modal_body.append( pokeInfo_peso  );
   modal_body.append( pokeInfo_altura );
 
-  modal_content.append(modal_body);
-  modal_dialog.append(modal_content);
+  modal_content.append( modal_body );
+  modal_content.append( modal_footer );
+  modal_dialog.append( modal_content );
 
-  modal.append(modal_dialog);
+  modal.append( modal_dialog );
 
 
   //TO-DO:

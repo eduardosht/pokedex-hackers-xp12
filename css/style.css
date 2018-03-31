@@ -4,3 +4,10 @@
 .modal-header {
     align-items: center;
 }
+.card-body {
+	cursor: pointer;
+}
+.card-title {
+	text-align: center;
+	margin-bottom: 3px;
+}
